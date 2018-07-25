@@ -1,0 +1,17 @@
+{
+  "name": "fillit",
+  "version": "1.0.0",
+  "description": "A simple firefox extension to auto fill the forms of a web page",
+  "main": "background.js",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "webpack": "^3.12.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "build": "webpack"
+  },
+  "author": "Jaume Capdevila <contact@jaumecapdevila.net>",
+  "license": "MIT"
+}

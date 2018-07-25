@@ -1,0 +1,22 @@
+{
+  "description": "Use vim like mode in all the inputs",
+  "manifest_version": 2,
+  "name": "ive",
+  "version": "1.0",
+
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["./dist/ive.js"]
+  }],
+
+  "icons": {
+    "48": "icons/ive.svg",
+    "96": "icons/ive.svg"
+  },
+
+  "applications": {
+    "gecko": {
+      "strict_min_version": "58.0"
+    }
+  }
+}
