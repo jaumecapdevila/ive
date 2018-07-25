@@ -115,13 +115,18 @@ function listeners(targets) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__buffer__ = __webpack_require__(3);
+
+
+const keyBuffer = new __WEBPACK_IMPORTED_MODULE_0__buffer__["a" /* KeyBuffer */]();
+
 const focusHandler = function() {
   this.setAttribute('readonly', true);
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = focusHandler;
 
 
-const keydownHandler = function(event) {
+const keydownHandler = function(event, ) {
   const key = event.key;
   switch (key) {
     case 'Escape':
@@ -134,12 +139,76 @@ const keydownHandler = function(event) {
         return;
       }
       break;
+    case 'd':
+      if (!this.hasAttribute('readonly')) {
+        return;
+      }
+      if (!keyBuffer.has('d')) {
+        keyBuffer.push('d');
+        event.preventDefault();
+        setTimeout(() => {
+          keyBuffer.clear();
+        }, 1000);
+        return;
+      }
+      const position = this.selectionStart;
+      const content = this.value.trim();
+      const lines = content.split('\n');
+
+      if (lines.length === 1) {
+        this.value = '';
+      }
+
+      let acumPosition = 0;
+
+      const cleaned = lines.map((line) => {
+        let oldPosition = acumPosition;
+        acumPosition += line.length;
+        if (position > oldPosition && position <= acumPosition) {
+          return '';
+        }
+        return line;
+      });
+
+      this.value = cleaned.join('\n');
+      keyBuffer.clear();
+      break;
     default:
       return;
   }
 };
 /* harmony export (immutable) */ __webpack_exports__["b"] = keydownHandler;
 
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = KeyBuffer;
+function KeyBuffer () {
+  this.keys = [];
+}
+
+/**
+ * @param {String} key
+ */
+KeyBuffer.prototype.push = function(key) {
+  this.keys.push(key);
+};
+
+/**
+ * @param {String} key
+ * @returns {Boolean}
+ */
+KeyBuffer.prototype.has = function(key) {
+  return this.keys.indexOf(key) !== -1;
+};
+
+KeyBuffer.prototype.clear = function() {
+  this.keys = [];
+};
 
 
 /***/ })
