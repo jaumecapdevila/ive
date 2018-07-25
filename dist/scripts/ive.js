@@ -116,6 +116,8 @@ function listeners(targets) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__buffer__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions__ = __webpack_require__(4);
+
 
 
 const keyBuffer = new __WEBPACK_IMPORTED_MODULE_0__buffer__["a" /* KeyBuffer */]();
@@ -143,35 +145,7 @@ const keydownHandler = function(event, ) {
       if (!this.hasAttribute('readonly')) {
         return;
       }
-      if (!keyBuffer.has('d')) {
-        keyBuffer.push('d');
-        event.preventDefault();
-        setTimeout(() => {
-          keyBuffer.clear();
-        }, 1000);
-        return;
-      }
-      const position = this.selectionStart;
-      const content = this.value.trim();
-      const lines = content.split('\n');
-
-      if (lines.length === 1) {
-        this.value = '';
-      }
-
-      let acumPosition = 0;
-
-      const cleaned = lines.map((line) => {
-        let oldPosition = acumPosition;
-        acumPosition += line.length;
-        if (position > oldPosition && position <= acumPosition) {
-          return '';
-        }
-        return line;
-      });
-
-      this.value = cleaned.join('\n');
-      keyBuffer.clear();
+      __WEBPACK_IMPORTED_MODULE_1__actions__["a" /* ddAction */].apply(this, [keyBuffer]);
       break;
     default:
       return;
@@ -209,6 +183,46 @@ KeyBuffer.prototype.has = function(key) {
 KeyBuffer.prototype.clear = function() {
   this.keys = [];
 };
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const ddAction = function(buffer) {
+  if (!buffer.has('d')) {
+    buffer.push('d');
+    event.preventDefault();
+    setTimeout(() => {
+      buffer.clear();
+    }, 1000);
+    return;
+  }
+  const position = this.selectionStart;
+  const content = this.value.trim();
+  const lines = content.split('\n');
+
+  if (lines.length === 1) {
+    this.value = '';
+  }
+
+  let acumPosition = 0;
+
+  const cleaned = lines.map(line => {
+    let oldPosition = acumPosition;
+    acumPosition += line.length;
+    if (position > oldPosition && position <= acumPosition) {
+      return '';
+    }
+    return line;
+  });
+
+  this.value = cleaned.join('\n');
+  buffer.clear();
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = ddAction;
+
 
 
 /***/ })
