@@ -104,6 +104,9 @@ function listeners(targets) {
   targets.forEach(function(target){
     target.addEventListener('focus', __WEBPACK_IMPORTED_MODULE_0__handlers__["a" /* focusHandler */]);
   });
+  targets.forEach(function(target){
+    target.addEventListener('keydown', __WEBPACK_IMPORTED_MODULE_0__handlers__["b" /* keydownHandler */]);
+  });
 }
 
 
@@ -113,9 +116,29 @@ function listeners(targets) {
 
 "use strict";
 const focusHandler = function() {
-  this.value = "Focus";
-}
+  this.setAttribute('readonly', true);
+};
 /* harmony export (immutable) */ __webpack_exports__["a"] = focusHandler;
+
+
+const keydownHandler = function(event) {
+  const key = event.key;
+  switch (key) {
+    case 'Escape':
+      this.setAttribute('readonly', true);
+      break;
+    case 'i':
+      if (this.hasAttribute('readonly')) {
+        this.removeAttribute('readonly');
+        event.preventDefault();
+        return;
+      }
+      break;
+    default:
+      return;
+  }
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = keydownHandler;
 
 
 

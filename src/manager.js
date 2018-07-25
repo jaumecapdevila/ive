@@ -1,4 +1,4 @@
-import { focusHandler } from './handlers';
+import { focusHandler, keydownHandler } from './handlers';
 
 export const init = function () {
   const textAreas = targets();
@@ -16,5 +16,8 @@ export const targets = () => Array.from(
 function listeners(targets) {
   targets.forEach(function(target){
     target.addEventListener('focus', focusHandler);
+  });
+  targets.forEach(function(target){
+    target.addEventListener('keydown', keydownHandler);
   });
 }
