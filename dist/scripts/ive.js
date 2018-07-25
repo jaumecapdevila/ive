@@ -72,7 +72,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__manager__ = __webpack_require__(1);
 
 
-Object(__WEBPACK_IMPORTED_MODULE_0__manager__["a" /* default */])();
+Object(__WEBPACK_IMPORTED_MODULE_0__manager__["a" /* init */])();
 
 
 /***/ }),
@@ -80,18 +80,31 @@ Object(__WEBPACK_IMPORTED_MODULE_0__manager__["a" /* default */])();
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__handlers__ = __webpack_require__(2);
 
 
 const init = function () {
-  __WEBPACK_IMPORTED_MODULE_0__util__["a" /* default */].forEach(target => {
-    target.addEventListener('focus', function(){
-      this.value = "Focused";
-    });
-  });
+  const textAreas = targets();
+  if (textAreas.length === 0) {
+    return;
+  }
+  listeners(textAreas);
 };
+/* harmony export (immutable) */ __webpack_exports__["a"] = init;
 
-/* harmony default export */ __webpack_exports__["a"] = ({ init });
+
+const targets = () => Array.from(
+  document.getElementsByTagName('textarea')
+);
+/* unused harmony export targets */
+
+
+
+function listeners(targets) {
+  targets.forEach(function(target){
+    target.addEventListener('focus', __WEBPACK_IMPORTED_MODULE_0__handlers__["a" /* focusHandler */]);
+  });
+}
 
 
 /***/ }),
@@ -99,9 +112,11 @@ const init = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-const targets = Array.from(document.getElementsByTagName('textarea'));
+const focusHandler = function() {
+  this.value = "Focus";
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = focusHandler;
 
-/* harmony default export */ __webpack_exports__["a"] = ({ targets });
 
 
 /***/ })

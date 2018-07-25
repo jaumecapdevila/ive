@@ -1,11 +1,20 @@
-import targets from './util';
+import { focusHandler } from './handlers';
 
-const init = function () {
-  targets.forEach(target => {
-    target.addEventListener('focus', function(){
-      this.value = "Focused";
-    });
-  });
+export const init = function () {
+  const textAreas = targets();
+  if (textAreas.length === 0) {
+    return;
+  }
+  listeners(textAreas);
 };
 
-export default { init };
+export const targets = () => Array.from(
+  document.getElementsByTagName('textarea')
+);
+
+
+function listeners(targets) {
+  targets.forEach(function(target){
+    target.addEventListener('focus', focusHandler);
+  });
+}

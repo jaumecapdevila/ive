@@ -1,3 +1,3 @@
-import init from './manager';
+import { init } from './manager';
 
 init();

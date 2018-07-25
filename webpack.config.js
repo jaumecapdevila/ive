@@ -4,6 +4,6 @@ module.exports = {
     entry: './src/ive.js',
     output: {
         filename: 'ive.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist/scripts')
     }
 };
