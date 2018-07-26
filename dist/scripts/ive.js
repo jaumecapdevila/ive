@@ -123,7 +123,7 @@ function listeners(targets) {
 const keyBuffer = new __WEBPACK_IMPORTED_MODULE_0__buffer__["a" /* KeyBuffer */]();
 
 const focusHandler = function() {
-  this.setAttribute('readOnly', true);
+  this.setAttribute('readonly', true);
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = focusHandler;
 
@@ -131,20 +131,26 @@ const focusHandler = function() {
 const keydownHandler = function(event) {
   switch (event.key) {
     case 'Escape':
-      this.setAttribute('readOnly', true);
+      this.setAttribute('readonly', true);
       break;
     case 'i':
-      if (this.hasAttribute('readOnly')) {
-        this.removeAttribute('readOnly');
+      if (this.hasAttribute('readonly')) {
+        this.removeAttribute('readonly');
         event.preventDefault();
         return;
       }
       break;
     case 'd':
-      if (!this.hasAttribute('readOnly')) {
+      if (!this.hasAttribute('readonly')) {
         return;
       }
       __WEBPACK_IMPORTED_MODULE_1__actions__["a" /* ddAction */].apply(this, [keyBuffer]);
+      break;
+    case 'y':
+      if (!this.hasAttribute('readonly')) {
+        return;
+      }
+      __WEBPACK_IMPORTED_MODULE_1__actions__["b" /* yyAction */].apply(this, [keyBuffer]);
       break;
     default:
       return;
@@ -216,6 +222,38 @@ const ddAction = function(buffer) {
   buffer.clear();
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = ddAction;
+
+
+const yyAction = function(buffer) {
+  if (!buffer.has('y')) {
+    buffer.push('y');
+    event.preventDefault();
+    setTimeout(() => {
+      buffer.clear();
+    }, 1000);
+    return;
+  }
+  const position = this.selectionStart;
+  const content = this.value.trim();
+  const lines = content.split('\n');
+
+  const currentLine = content
+    .slice(0, position)
+    .split('\n').length;
+
+  const updatedContent = [];
+
+  lines.forEach((line, number) => {
+    updatedContent.push(line);
+    if ((number + 1) === currentLine) {
+      updatedContent.push(line);
+    }
+  });
+
+  this.value = updatedContent.join('\n');
+  buffer.clear();
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = yyAction;
 
 
 

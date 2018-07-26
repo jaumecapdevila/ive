@@ -24,3 +24,33 @@ export const ddAction = function(buffer) {
   this.value = filtered.join('\n');
   buffer.clear();
 };
+
+export const yyAction = function(buffer) {
+  if (!buffer.has('y')) {
+    buffer.push('y');
+    event.preventDefault();
+    setTimeout(() => {
+      buffer.clear();
+    }, 1000);
+    return;
+  }
+  const position = this.selectionStart;
+  const content = this.value.trim();
+  const lines = content.split('\n');
+
+  const currentLine = content
+    .slice(0, position)
+    .split('\n').length;
+
+  const updatedContent = [];
+
+  lines.forEach((line, number) => {
+    updatedContent.push(line);
+    if ((number + 1) === currentLine) {
+      updatedContent.push(line);
+    }
+  });
+
+  this.value = updatedContent.join('\n');
+  buffer.clear();
+};

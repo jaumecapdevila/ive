@@ -1,5 +1,5 @@
 import { KeyBuffer } from './buffer';
-import { ddAction } from './actions';
+import { ddAction, yyAction } from './actions';
 
 const keyBuffer = new KeyBuffer();
 
@@ -24,6 +24,12 @@ export const keydownHandler = function(event) {
         return;
       }
       ddAction.apply(this, [keyBuffer]);
+      break;
+    case 'y':
+      if (!this.hasAttribute('readonly')) {
+        return;
+      }
+      yyAction.apply(this, [keyBuffer]);
       break;
     default:
       return;
