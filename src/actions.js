@@ -54,3 +54,17 @@ export const yyAction = function(buffer) {
   this.value = updatedContent.join('\n');
   buffer.clear();
 };
+
+
+export const ggAction = function(buffer) {
+  if (!buffer.has('g')) {
+    buffer.push('g');
+    setTimeout(() => {
+      buffer.clear();
+    }, 1000);
+    return;
+  }
+  this.selectionStart = 0;
+  this.selectionEnd = 0;
+  buffer.clear();
+};

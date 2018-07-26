@@ -1,5 +1,5 @@
 import { KeyBuffer } from './buffer';
-import { ddAction, yyAction } from './actions';
+import { ddAction, yyAction, ggAction } from './actions';
 
 const keyBuffer = new KeyBuffer();
 
@@ -30,6 +30,11 @@ export const keydownHandler = function(event) {
     case 'y':
       if (isDisabled) {
         yyAction.apply(this, [keyBuffer]);
+      }
+      break;
+    case 'g':
+      if (isDisabled) {
+        ggAction.apply(this, [keyBuffer]);
       }
       break;
     default:

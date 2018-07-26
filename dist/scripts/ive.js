@@ -150,7 +150,12 @@ const keydownHandler = function(event) {
       break;
     case 'y':
       if (isDisabled) {
-        __WEBPACK_IMPORTED_MODULE_1__actions__["b" /* yyAction */].apply(this, [keyBuffer]);
+        __WEBPACK_IMPORTED_MODULE_1__actions__["c" /* yyAction */].apply(this, [keyBuffer]);
+      }
+      break;
+    case 'g':
+      if (isDisabled) {
+        __WEBPACK_IMPORTED_MODULE_1__actions__["b" /* ggAction */].apply(this, [keyBuffer]);
       }
       break;
     default:
@@ -254,7 +259,23 @@ const yyAction = function(buffer) {
   this.value = updatedContent.join('\n');
   buffer.clear();
 };
-/* harmony export (immutable) */ __webpack_exports__["b"] = yyAction;
+/* harmony export (immutable) */ __webpack_exports__["c"] = yyAction;
+
+
+
+const ggAction = function(buffer) {
+  if (!buffer.has('g')) {
+    buffer.push('g');
+    setTimeout(() => {
+      buffer.clear();
+    }, 1000);
+    return;
+  }
+  this.selectionStart = 0;
+  this.selectionEnd = 0;
+  buffer.clear();
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = ggAction;
 
 
 
