@@ -123,34 +123,35 @@ function listeners(targets) {
 const keyBuffer = new __WEBPACK_IMPORTED_MODULE_0__buffer__["a" /* KeyBuffer */]();
 
 const focusHandler = function() {
-  this.setAttribute('readonly', true);
+  this.classList.add('disabled');
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = focusHandler;
 
 
 const keydownHandler = function(event) {
+  const isDisabled = this.classList.contains('disabled');
+  if (isDisabled) {
+    event.preventDefault();
+  }
   switch (event.key) {
     case 'Escape':
-      this.setAttribute('readonly', true);
+      this.classList.add('disabled');
       break;
     case 'i':
-      if (this.hasAttribute('readonly')) {
-        this.removeAttribute('readonly');
-        event.preventDefault();
+      if (isDisabled) {
+        this.classList.remove('disabled');
         return;
       }
       break;
     case 'd':
-      if (!this.hasAttribute('readonly')) {
-        return;
+      if (isDisabled) {
+        __WEBPACK_IMPORTED_MODULE_1__actions__["a" /* ddAction */].apply(this, [keyBuffer]);
       }
-      __WEBPACK_IMPORTED_MODULE_1__actions__["a" /* ddAction */].apply(this, [keyBuffer]);
       break;
     case 'y':
-      if (!this.hasAttribute('readonly')) {
-        return;
+      if (isDisabled) {
+        __WEBPACK_IMPORTED_MODULE_1__actions__["b" /* yyAction */].apply(this, [keyBuffer]);
       }
-      __WEBPACK_IMPORTED_MODULE_1__actions__["b" /* yyAction */].apply(this, [keyBuffer]);
       break;
     default:
       return;
@@ -204,9 +205,9 @@ const ddAction = function(buffer) {
     }, 1000);
     return;
   }
-  const position = this.selectionStart;
-  const content = this.value.trim();
-  const lines = content.split('\n');
+  const position = this.selectionStart,
+    content = this.value.trim(),
+    lines = content.split('\n');
 
   if (lines.length === 1) {
     this.value = '';
@@ -233,9 +234,9 @@ const yyAction = function(buffer) {
     }, 1000);
     return;
   }
-  const position = this.selectionStart;
-  const content = this.value.trim();
-  const lines = content.split('\n');
+  const position = this.selectionStart,
+    content = this.value.trim(),
+    lines = content.split('\n');
 
   const currentLine = content
     .slice(0, position)

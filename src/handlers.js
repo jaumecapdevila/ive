@@ -4,32 +4,33 @@ import { ddAction, yyAction } from './actions';
 const keyBuffer = new KeyBuffer();
 
 export const focusHandler = function() {
-  this.setAttribute('readonly', true);
+  this.classList.add('disabled');
 };
 
 export const keydownHandler = function(event) {
+  const isDisabled = this.classList.contains('disabled');
+  if (isDisabled) {
+    event.preventDefault();
+  }
   switch (event.key) {
     case 'Escape':
-      this.setAttribute('readonly', true);
+      this.classList.add('disabled');
       break;
     case 'i':
-      if (this.hasAttribute('readonly')) {
-        this.removeAttribute('readonly');
-        event.preventDefault();
+      if (isDisabled) {
+        this.classList.remove('disabled');
         return;
       }
       break;
     case 'd':
-      if (!this.hasAttribute('readonly')) {
-        return;
+      if (isDisabled) {
+        ddAction.apply(this, [keyBuffer]);
       }
-      ddAction.apply(this, [keyBuffer]);
       break;
     case 'y':
-      if (!this.hasAttribute('readonly')) {
-        return;
+      if (isDisabled) {
+        yyAction.apply(this, [keyBuffer]);
       }
-      yyAction.apply(this, [keyBuffer]);
       break;
     default:
       return;
