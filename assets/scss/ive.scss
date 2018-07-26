@@ -1,3 +1,5 @@
 textarea {
-    background-color: red;
+    &.disabled {
+        color: grey;
+    }
 }

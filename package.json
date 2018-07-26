@@ -12,7 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "build": "webpack",
-    "sass": "node-sass assets/scss/ive.scss -o dist/css/"
+    "sass": "node-sass assets/scss/ive.scss -o dist/styles/"
   },
   "author": "Jaume Capdevila <contact@jaumecapdevila.net>",
   "license": "MIT"
