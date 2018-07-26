@@ -7,9 +7,9 @@ export const ddAction = function(buffer) {
     }, 1000);
     return;
   }
-  const position = this.selectionStart;
-  const content = this.value.trim();
-  const lines = content.split('\n');
+  const position = this.selectionStart,
+    content = this.value.trim(),
+    lines = content.split('\n');
 
   if (lines.length === 1) {
     this.value = '';
@@ -34,9 +34,9 @@ export const yyAction = function(buffer) {
     }, 1000);
     return;
   }
-  const position = this.selectionStart;
-  const content = this.value.trim();
-  const lines = content.split('\n');
+  const position = this.selectionStart,
+    content = this.value.trim(),
+    lines = content.split('\n');
 
   const currentLine = content
     .slice(0, position)
