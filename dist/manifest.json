@@ -1,5 +1,5 @@
 {
-  "description": "Use vim like mode in all the inputs",
+  "description": "A Vim like input's editor",
   "manifest_version": 2,
   "name": "ive",
   "version": "1.0",

@@ -1,8 +1,8 @@
 {
-  "name": "fillit",
+  "name": "ive",
   "version": "1.0.0",
-  "description": "A simple firefox extension to auto fill the forms of a web page",
-  "main": "background.js",
+  "description": "A Vim like input's editor",
+  "main": "./src/ive.js",
   "devDependencies": {
     "eslint": "^4.19.1",
     "webpack": "^3.12.0"
