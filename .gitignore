@@ -1,2 +1,4 @@
 node_modules/
-ive.js
+/dist/styles/
+/dist/scripts/
+

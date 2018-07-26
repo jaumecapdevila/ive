@@ -5,12 +5,14 @@
   "main": "./src/ive.js",
   "devDependencies": {
     "eslint": "^4.19.1",
+    "node-sass": "^4.9.2",
     "webpack": "^3.12.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "build": "webpack"
+    "build": "webpack",
+    "sass": "node-sass assets/scss/ive.scss -o dist/css/"
   },
   "author": "Jaume Capdevila <contact@jaumecapdevila.net>",
   "license": "MIT"
