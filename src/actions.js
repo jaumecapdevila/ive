@@ -15,11 +15,9 @@ export const ddAction = function(buffer) {
     this.value = '';
   }
 
-  const currentLine = content
-    .slice(0, position)
-    .split('\n').length;
+  const currentLine = content.slice(0, position).split('\n').length;
 
-  const filtered = lines.filter((line, index) => (index + 1) !== currentLine);
+  const filtered = lines.filter((line, index) => index + 1 !== currentLine);
 
   this.value = filtered.join('\n');
   buffer.clear();
@@ -38,15 +36,13 @@ export const yyAction = function(buffer) {
     content = this.value.trim(),
     lines = content.split('\n');
 
-  const currentLine = content
-    .slice(0, position)
-    .split('\n').length;
+  const currentLine = content.slice(0, position).split('\n').length;
 
   const updatedContent = [];
 
   lines.forEach((line, number) => {
     updatedContent.push(line);
-    if ((number + 1) === currentLine) {
+    if (number + 1 === currentLine) {
       updatedContent.push(line);
     }
   });
@@ -54,7 +50,6 @@ export const yyAction = function(buffer) {
   this.value = updatedContent.join('\n');
   buffer.clear();
 };
-
 
 export const ggAction = function(buffer) {
   if (!buffer.has('g')) {

@@ -1,5 +1,5 @@
-import { KeyBuffer } from './buffer';
-import { ddAction, yyAction, ggAction } from './actions';
+import {KeyBuffer} from './buffer';
+import {ddAction, yyAction, ggAction} from './actions';
 
 const keyBuffer = new KeyBuffer();
 

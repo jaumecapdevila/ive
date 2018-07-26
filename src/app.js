@@ -1,6 +1,6 @@
-import { focusHandler, keydownHandler } from './handlers';
+import {focusHandler, keydownHandler} from './handlers';
 
-export const init = function () {
+export const init = function() {
   const textAreas = targets();
   if (textAreas.length === 0) {
     return;
@@ -8,16 +8,14 @@ export const init = function () {
   listeners(textAreas);
 };
 
-export const targets = () => Array.from(
-  document.getElementsByTagName('textarea')
-);
-
+export const targets = () =>
+  Array.from(document.getElementsByTagName('textarea'));
 
 function listeners(targets) {
-  targets.forEach(function(target){
+  targets.forEach(function(target) {
     target.addEventListener('focus', focusHandler);
   });
-  targets.forEach(function(target){
+  targets.forEach(function(target) {
     target.addEventListener('keydown', keydownHandler);
   });
 }

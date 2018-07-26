@@ -1,4 +1,4 @@
-export function KeyBuffer () {
+export function KeyBuffer() {
   this.keys = [];
 }
 
