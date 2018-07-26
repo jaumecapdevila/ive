@@ -15,17 +15,12 @@ export const ddAction = function(buffer) {
     this.value = '';
   }
 
-  let acumPosition = 0;
+  const currentLine = content
+    .slice(0, position)
+    .split('\n').length;
 
-  const cleaned = lines.map(line => {
-    let oldPosition = acumPosition;
-    acumPosition += line.length;
-    if (position > oldPosition && position <= acumPosition) {
-      return '';
-    }
-    return line;
-  });
+  const filtered = lines.filter((line, index) => (index + 1) !== currentLine);
 
-  this.value = cleaned.join('\n');
+  this.value = filtered.join('\n');
   buffer.clear();
 };

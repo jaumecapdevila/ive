@@ -123,26 +123,25 @@ function listeners(targets) {
 const keyBuffer = new __WEBPACK_IMPORTED_MODULE_0__buffer__["a" /* KeyBuffer */]();
 
 const focusHandler = function() {
-  this.setAttribute('readonly', true);
+  this.setAttribute('readOnly', true);
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = focusHandler;
 
 
-const keydownHandler = function(event, ) {
-  const key = event.key;
-  switch (key) {
+const keydownHandler = function(event) {
+  switch (event.key) {
     case 'Escape':
-      this.setAttribute('readonly', true);
+      this.setAttribute('readOnly', true);
       break;
     case 'i':
-      if (this.hasAttribute('readonly')) {
-        this.removeAttribute('readonly');
+      if (this.hasAttribute('readOnly')) {
+        this.removeAttribute('readOnly');
         event.preventDefault();
         return;
       }
       break;
     case 'd':
-      if (!this.hasAttribute('readonly')) {
+      if (!this.hasAttribute('readOnly')) {
         return;
       }
       __WEBPACK_IMPORTED_MODULE_1__actions__["a" /* ddAction */].apply(this, [keyBuffer]);
@@ -207,18 +206,13 @@ const ddAction = function(buffer) {
     this.value = '';
   }
 
-  let acumPosition = 0;
+  const currentLine = content
+    .slice(0, position)
+    .split('\n').length;
 
-  const cleaned = lines.map(line => {
-    let oldPosition = acumPosition;
-    acumPosition += line.length;
-    if (position > oldPosition && position <= acumPosition) {
-      return '';
-    }
-    return line;
-  });
+  const filtered = lines.filter((line, index) => (index + 1) !== currentLine);
 
-  this.value = cleaned.join('\n');
+  this.value = filtered.join('\n');
   buffer.clear();
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = ddAction;
