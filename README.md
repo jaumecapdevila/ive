@@ -1,26 +1,44 @@
-# Fillit
+# IVE
 
-Fillit is a very simplistic extension for Firefox that will try to autofill the inputs of all the forms present in the current page that you are visiting. 
+> VIM emulation for your textareas
 
-## How it works
+## Install
 
-The extension is going to look for the `placeholder`  attribute of all the inputs and will use it's value to fill the associated input. In the case that no `placeholder` attribute is found, it will use a default value depending on the input's type. The current available types are:
+This extension is still in development so it's not ready to be in any extension marketplace. If you want to try this extension jump right to the **Testing** section.
+
+## Available commands
+
+| Command   | Action                                                       |
+| --------- | ------------------------------------------------------------ |
+| yy        | Duplicates the current line                                  |
+| dd        | Remove the current line (without copying its content to the buffer) |
+| gg        | Set the position of the cursor at the beginning of the content |
+| Shift + G | Set the position of the cursor at the end of the content     |
+| Esc       | Activate the normal mode                                     |
+| i         | Activate the insert mode                                     |
+
+A lot of more commands coming soon :) Feel free to collaborate by making a Pull Request.
+
+## Setup
+
+Install dependencies:
 
 ```
-const availableTypes = [
-	'text',
-	'password',
-	'email',
-	'tel',
-	'url',
-	'number',
-	'range',
-	'date',
-	'color',
-];
+npm install
 ```
 
-## Configuration
+Compile scripts and styles:
 
-You can configure if the extension should automatically check for the available forms or not. To change the default value (which is false), just go the the extension's preference page and update the *Automatic check* checkbox.
+```
+npm start
+```
 
+## Testing
+
+###### Firefox
+
+1. Navigate to `about:debugging`
+
+2. Click on `Load temporary Add-on`
+
+3. Select the `manifest.json` inside the `dist` folder
