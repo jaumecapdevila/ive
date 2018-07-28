@@ -11,6 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
+    "start": "npm run build && npm run sass",
     "build": "webpack",
     "sass": "node-sass assets/scss/ive.scss -o dist/styles/"
   },
