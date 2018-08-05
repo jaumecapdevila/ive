@@ -77,14 +77,40 @@ export const toLineStartAction = function() {
 
   const currentLine = content.slice(0, position).split('\n').length;
 
-  let lineBegin = 0;
+  let lineEnd = 0;
 
   const offset = currentLine - 1;
 
   for (let i = 0; i < offset; i++) {
-    lineBegin += lines[i].length;
+    lineEnd += lines[i].length;
   }
 
-  this.selectionStart = lineBegin + offset;
-  this.selectionEnd = lineBegin + offset;
+  this.selectionStart = lineEnd + offset;
+  this.selectionEnd = lineEnd + offset;
+};
+
+export const toLineEndAction = function() {
+  const position = this.selectionStart,
+    content = this.value.trim(),
+    characters = content.length,
+    lines = content.split('\n');
+
+  if (lines.length === 1) {
+    this.selectionStart = characters;
+    this.selectionEnd = characters;
+    return;
+  }
+
+  const currentLine = content.slice(0, position).split('\n').length;
+
+  let lineEnd = 0;
+
+  const offset = currentLine - 1;
+
+  for (let i = 0; i <= offset; i++) {
+    lineEnd += lines[i].length;
+  }
+
+  this.selectionStart = lineEnd + offset;
+  this.selectionEnd = lineEnd + offset;
 };

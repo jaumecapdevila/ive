@@ -1,5 +1,11 @@
 import {KeyBuffer} from './buffer';
-import {ddAction, yyAction, ggAction, toLineStartAction } from './actions';
+import {
+  ddAction,
+  yyAction,
+  ggAction,
+  toLineStartAction,
+  toLineEndAction,
+} from './actions';
 
 const keyBuffer = new KeyBuffer();
 
@@ -12,6 +18,7 @@ export const keydownHandler = function(event) {
   if (isDisabled) {
     event.preventDefault();
   }
+
   switch (event.key) {
     case 'Escape':
       this.classList.add('disabled');
@@ -40,6 +47,11 @@ export const keydownHandler = function(event) {
     case '0':
       if (isDisabled) {
         toLineStartAction.apply(this);
+      }
+      break;
+    case '$':
+      if (isDisabled) {
+        toLineEndAction.apply(this);
       }
       break;
     default:
