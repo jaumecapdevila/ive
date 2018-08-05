@@ -16,6 +16,8 @@ This extension is still in development so it's not ready to be in any extension 
 | Shift + G | Set the position of the cursor at the end of the content     |
 | Esc       | Activate the normal mode                                     |
 | i         | Activate the insert mode                                     |
+| $         | Set the position of the cursor at the end of the current line |
+| 0         | Set the position of the cursor at the beginning of the current line |
 
 A lot of more commands coming soon :) Feel free to collaborate by making a Pull Request.
 
