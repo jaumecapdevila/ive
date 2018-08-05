@@ -63,3 +63,28 @@ export const ggAction = function(buffer) {
   this.selectionEnd = 0;
   buffer.clear();
 };
+
+export const toLineStartAction = function() {
+  const position = this.selectionStart,
+    content = this.value.trim(),
+    lines = content.split('\n');
+
+  if (lines.length === 1) {
+    this.selectionStart = 0;
+    this.selectionEnd = 0;
+    return;
+  }
+
+  const currentLine = content.slice(0, position).split('\n').length;
+
+  let lineBegin = 0;
+
+  const offset = currentLine - 1;
+
+  for (let i = 0; i < offset; i++) {
+    lineBegin += lines[i].length;
+  }
+
+  this.selectionStart = lineBegin + offset;
+  this.selectionEnd = lineBegin + offset;
+};
