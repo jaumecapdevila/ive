@@ -114,3 +114,31 @@ export const toLineEndAction = function() {
   this.selectionStart = lineEnd + offset;
   this.selectionEnd = lineEnd + offset;
 };
+
+export const toLineEndWithEditAction = function() {
+  const position = this.selectionStart,
+    content = this.value.trim(),
+    characters = content.length,
+    lines = content.split('\n');
+
+  if (lines.length === 1) {
+    this.selectionStart = characters;
+    this.selectionEnd = characters;
+    this.classList.remove('disabled');
+    return;
+  }
+
+  const currentLine = content.slice(0, position).split('\n').length;
+
+  let lineEnd = 0;
+
+  const offset = currentLine - 1;
+
+  for (let i = 0; i <= offset; i++) {
+    lineEnd += lines[i].length;
+  }
+
+  this.selectionStart = lineEnd + offset;
+  this.selectionEnd = lineEnd + offset;
+  this.classList.remove('disabled');
+};

@@ -5,6 +5,7 @@ import {
   ggAction,
   toLineStartAction,
   toLineEndAction,
+  toLineEndWithEditAction
 } from './actions';
 
 const keyBuffer = new KeyBuffer();
@@ -52,6 +53,11 @@ export const keydownHandler = function(event) {
     case '$':
       if (isDisabled) {
         toLineEndAction.apply(this);
+      }
+      break;
+    case 'A':
+      if (isDisabled && event.shiftKey) {
+        toLineEndWithEditAction.apply(this);
       }
       break;
     default:
