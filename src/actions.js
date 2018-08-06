@@ -146,11 +146,10 @@ export const toLineEndWithEditAction = function() {
 export const newLineWithEditAction = function() {
   const position = this.selectionStart,
     content = this.value.trim(),
-    characters = content.length,
     lines = content.split('\n');
 
   if (lines.length === 1) {
-    lines.push("");
+    lines.push('');
     this.value = lines.join('\n');
     this.classList.remove('disabled');
     return;
@@ -160,7 +159,7 @@ export const newLineWithEditAction = function() {
 
   let lineEnd = 0;
 
-  lines.splice(currentLine, 0, "");
+  lines.splice(currentLine, 0, '');
 
   for (let i = 0; i <= currentLine; i++) {
     lineEnd += lines[i].length;
