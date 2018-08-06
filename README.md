@@ -18,6 +18,7 @@ This extension is still in development so it's not ready to be in any extension 
 | i       | Activate the insert mode                                     |
 | $       | Set the position of the cursor at the end of the current line |
 | 0       | Set the position of the cursor at the beginning of the current line |
+| A       | Set the position of the cursor at the end of the current line and switch to insert mode |
 
 A lot of more commands coming soon :) Feel free to collaborate by making a Pull Request.
 
