@@ -142,3 +142,32 @@ export const toLineEndWithEditAction = function() {
   this.selectionEnd = lineEnd + offset;
   this.classList.remove('disabled');
 };
+
+export const newLineWithEditAction = function() {
+  const position = this.selectionStart,
+    content = this.value.trim(),
+    characters = content.length,
+    lines = content.split('\n');
+
+  if (lines.length === 1) {
+    lines.push("");
+    this.value = lines.join('\n');
+    this.classList.remove('disabled');
+    return;
+  }
+
+  const currentLine = content.slice(0, position).split('\n').length;
+
+  let lineEnd = 0;
+
+  lines.splice(currentLine, 0, "");
+
+  for (let i = 0; i <= currentLine; i++) {
+    lineEnd += lines[i].length;
+  }
+
+  this.value = lines.join('\n');
+  this.selectionStart = lineEnd + currentLine;
+  this.selectionEnd = lineEnd + currentLine;
+  this.classList.remove('disabled');
+};
