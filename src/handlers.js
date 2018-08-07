@@ -17,6 +17,7 @@ export const focusHandler = function() {
 
 export const keydownHandler = function(event) {
   const isDisabled = this.classList.contains('disabled');
+
   if (isDisabled) {
     event.preventDefault();
   }
