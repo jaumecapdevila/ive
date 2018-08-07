@@ -1,20 +1,19 @@
 {
-  "description": "A Vim like input's editor",
+  "description": "VIM emulation for your textareas",
   "manifest_version": 2,
   "name": "ive",
-  "version": "1.0",
-
+  "version": "1.0.0",
+  "author": "Jaume Capdevila",
+  "homepage_url": "https://github.com/jaumecapdevila/ive",
   "content_scripts": [{
     "matches": ["<all_urls>"],
     "js": ["scripts/ive.js"],
     "css": ["styles/ive.css"]
   }],
-
   "icons": {
     "48": "icons/ive.svg",
     "96": "icons/ive.svg"
   },
-
   "applications": {
     "gecko": {
       "strict_min_version": "58.0"
