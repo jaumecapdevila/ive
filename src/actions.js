@@ -15,7 +15,7 @@ export const ddAction = function(buffer) {
     this.value = '';
   }
 
-  const currentLine = content.slice(0, position).split('\n').length;
+  const currentLine = getCurrentLine(content, position);
 
   const filtered = lines.filter((line, index) => index + 1 !== currentLine);
 
@@ -36,7 +36,7 @@ export const yyAction = function(buffer) {
     content = this.value.trim(),
     lines = content.split('\n');
 
-  const currentLine = content.slice(0, position).split('\n').length;
+  const currentLine = getCurrentLine(content, position);
 
   const updatedContent = [];
 
@@ -75,7 +75,7 @@ export const toLineStartAction = function() {
     return;
   }
 
-  const currentLine = content.slice(0, position).split('\n').length;
+  const currentLine = getCurrentLine(content, position);
 
   let lineEnd = 0;
 
@@ -101,7 +101,7 @@ export const toLineEndAction = function() {
     return;
   }
 
-  const currentLine = content.slice(0, position).split('\n').length;
+  const currentLine = getCurrentLine(content, position);
 
   let lineEnd = 0;
 
@@ -128,7 +128,7 @@ export const toLineEndWithEditAction = function() {
     return;
   }
 
-  const currentLine = content.slice(0, position).split('\n').length;
+  const currentLine = getCurrentLine(content, position);
 
   let lineEnd = 0;
 
@@ -155,7 +155,7 @@ export const newLineWithEditAction = function() {
     return;
   }
 
-  const currentLine = content.slice(0, position).split('\n').length;
+  const currentLine = getCurrentLine(content, position);
 
   let lineEnd = 0;
 
@@ -170,3 +170,11 @@ export const newLineWithEditAction = function() {
   this.selectionEnd = lineEnd + currentLine;
   this.classList.remove('disabled');
 };
+
+/**
+ * @param {String} position
+ * @param {String} content
+ */
+function getCurrentLine(position, content) {
+  return getCurrentLine(content, position);
+}
