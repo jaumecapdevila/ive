@@ -1,7 +1,6 @@
 export const ddAction = function(buffer) {
   if (!buffer.has('d')) {
     buffer.push('d');
-    event.preventDefault();
     setTimeout(() => {
       buffer.clear();
     }, 1000);
@@ -26,7 +25,6 @@ export const ddAction = function(buffer) {
 export const yyAction = function(buffer) {
   if (!buffer.has('y')) {
     buffer.push('y');
-    event.preventDefault();
     setTimeout(() => {
       buffer.clear();
     }, 1000);
