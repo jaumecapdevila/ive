@@ -1,4 +1,5 @@
 import {KeyBuffer} from './buffer/key';
+import {CopyBuffer} from './buffer/copy';
 import {
   ddAction,
   yyAction,
@@ -6,10 +7,12 @@ import {
   toLineStartAction,
   toLineEndAction,
   toLineEndWithEditAction,
-  newLineWithEditAction
+  newLineWithEditAction,
+  pasteAction,
 } from './actions';
 
 const keyBuffer = new KeyBuffer();
+const copyBuffer = new CopyBuffer();
 
 export const focusHandler = function() {
   this.classList.add('disabled');
@@ -39,7 +42,7 @@ export const keydownHandler = function(event) {
       break;
     case 'y':
       if (isDisabled) {
-        yyAction.apply(this, [keyBuffer]);
+        yyAction.apply(this, [keyBuffer, copyBuffer]);
       }
       break;
     case 'g':
@@ -65,6 +68,11 @@ export const keydownHandler = function(event) {
     case 'O':
       if (isDisabled) {
         newLineWithEditAction.apply(this);
+      }
+      break;
+    case 'p':
+      if (isDisabled) {
+        pasteAction.apply(this, [copyBuffer]);
       }
       break;
     default:

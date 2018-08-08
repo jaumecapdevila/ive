@@ -1,8 +1,8 @@
-export const ddAction = function(buffer) {
-  if (!buffer.has('d')) {
-    buffer.push('d');
+export const ddAction = function(keyBuffer) {
+  if (!keyBuffer.has('d')) {
+    keyBuffer.push('d');
     setTimeout(() => {
-      buffer.clear();
+      keyBuffer.clear();
     }, 1000);
     return;
   }
@@ -19,14 +19,14 @@ export const ddAction = function(buffer) {
   const filtered = lines.filter((line, index) => index + 1 !== currentLine);
 
   this.value = filtered.join('\n');
-  buffer.clear();
+  keyBuffer.clear();
 };
 
-export const yyAction = function(buffer) {
-  if (!buffer.has('y')) {
-    buffer.push('y');
+export const yyAction = function(keyBuffer, copyBuffer) {
+  if (!keyBuffer.has('y')) {
+    keyBuffer.push('y');
     setTimeout(() => {
-      buffer.clear();
+      keyBuffer.clear();
     }, 1000);
     return;
   }
@@ -35,31 +35,22 @@ export const yyAction = function(buffer) {
     lines = content.split('\n');
 
   const currentLine = getCurrentLine(content, position);
+  copyBuffer.copy(lines[currentLine - 1]);
 
-  const updatedContent = [];
-
-  lines.forEach((line, number) => {
-    updatedContent.push(line);
-    if (number + 1 === currentLine) {
-      updatedContent.push(line);
-    }
-  });
-
-  this.value = updatedContent.join('\n');
-  buffer.clear();
+  keyBuffer.clear();
 };
 
-export const ggAction = function(buffer) {
-  if (!buffer.has('g')) {
-    buffer.push('g');
+export const ggAction = function(keyBuffer) {
+  if (!keyBuffer.has('g')) {
+    keyBuffer.push('g');
     setTimeout(() => {
-      buffer.clear();
+      keyBuffer.clear();
     }, 1000);
     return;
   }
   this.selectionStart = 0;
   this.selectionEnd = 0;
-  buffer.clear();
+  keyBuffer.clear();
 };
 
 export const toLineStartAction = function() {
@@ -169,10 +160,25 @@ export const newLineWithEditAction = function() {
   this.classList.remove('disabled');
 };
 
+export const pasteAction = function(copyBuffer) {
+  if (copyBuffer.empty()) {
+    return;
+  }
+  const position = this.selectionStart,
+    content = this.value.trim(),
+    lines = content.split('\n');
+
+  const currentLine = getCurrentLine(content, position);
+
+  lines.splice(currentLine, 0, copyBuffer.paste());
+  this.value = lines.join('\n');
+};
+
 /**
- * @param {String} position
  * @param {String} content
+ * @param {String} position
+ * @returns {Number}
  */
-function getCurrentLine(position, content) {
-  return getCurrentLine(content, position);
+function getCurrentLine(content, position) {
+  return content.slice(0, position).split('\n').length;
 }
