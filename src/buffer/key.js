@@ -7,6 +7,9 @@ export function KeyBuffer() {
  */
 KeyBuffer.prototype.push = function(key) {
   this.keys.push(key);
+  setTimeout(() => {
+    this.clear();
+  }, 1000);
 };
 
 /**

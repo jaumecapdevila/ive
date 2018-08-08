@@ -1,9 +1,6 @@
 export const ddAction = function(keyBuffer, copyBuffer) {
   if (!keyBuffer.has('d')) {
     keyBuffer.push('d');
-    setTimeout(() => {
-      keyBuffer.clear();
-    }, 1000);
     return;
   }
   const position = this.selectionStart,
@@ -28,9 +25,6 @@ export const ddAction = function(keyBuffer, copyBuffer) {
 export const yyAction = function(keyBuffer, copyBuffer) {
   if (!keyBuffer.has('y')) {
     keyBuffer.push('y');
-    setTimeout(() => {
-      keyBuffer.clear();
-    }, 1000);
     return;
   }
   const position = this.selectionStart,
@@ -46,9 +40,6 @@ export const yyAction = function(keyBuffer, copyBuffer) {
 export const ggAction = function(keyBuffer) {
   if (!keyBuffer.has('g')) {
     keyBuffer.push('g');
-    setTimeout(() => {
-      keyBuffer.clear();
-    }, 1000);
     return;
   }
   this.selectionStart = 0;
