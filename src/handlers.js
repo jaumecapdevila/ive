@@ -4,6 +4,7 @@ import {
   ddAction,
   yyAction,
   ggAction,
+  GAction,
   toLineStartAction,
   toLineEndAction,
   toLineEndWithEditAction,
@@ -57,6 +58,11 @@ export const keydownHandler = function(event) {
     case 'g':
       if (isDisabled) {
         ggAction.apply(this, [keyBuffer]);
+      }
+      break;
+    case 'G':
+      if (isDisabled) {
+        GAction.apply(this);
       }
       break;
     case '0':

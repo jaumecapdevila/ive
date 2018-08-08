@@ -47,6 +47,12 @@ export const ggAction = function(keyBuffer) {
   keyBuffer.clear();
 };
 
+export const GAction = function() {
+  const content = this.value;
+  this.selectionStart = content.length;
+  this.selectionEnd = content.length;
+};
+
 export const toLineStartAction = function() {
   const position = this.selectionStart,
     content = this.value.trim(),
