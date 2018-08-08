@@ -19,13 +19,22 @@ export const focusHandler = function() {
 };
 
 export const keydownHandler = function(event) {
+  const navigationKeys = [
+    'ArrowUp',
+    'ArrowRight',
+    'ArrowDown',
+    'ArrowLeft',
+  ];
+
+  const key = event.key;
+
   const isDisabled = this.classList.contains('disabled');
 
-  if (isDisabled) {
+  if (isDisabled && navigationKeys.indexOf(key) === -1) {
     event.preventDefault();
   }
 
-  switch (event.key) {
+  switch (key) {
     case 'Escape':
       this.classList.add('disabled');
       break;
