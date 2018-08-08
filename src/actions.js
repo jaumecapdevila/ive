@@ -1,4 +1,4 @@
-export const ddAction = function(keyBuffer) {
+export const ddAction = function(keyBuffer, copyBuffer) {
   if (!keyBuffer.has('d')) {
     keyBuffer.push('d');
     setTimeout(() => {
@@ -16,9 +16,12 @@ export const ddAction = function(keyBuffer) {
 
   const currentLine = getCurrentLine(content, position);
 
+  copyBuffer.copy(lines[currentLine - 1]);
+
   const filtered = lines.filter((line, index) => index + 1 !== currentLine);
 
   this.value = filtered.join('\n');
+
   keyBuffer.clear();
 };
 

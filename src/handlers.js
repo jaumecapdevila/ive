@@ -37,7 +37,7 @@ export const keydownHandler = function(event) {
       break;
     case 'd':
       if (isDisabled) {
-        ddAction.apply(this, [keyBuffer]);
+        ddAction.apply(this, [keyBuffer, copyBuffer]);
       }
       break;
     case 'y':
