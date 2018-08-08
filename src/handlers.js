@@ -1,4 +1,4 @@
-import {KeyBuffer} from './buffer';
+import {KeyBuffer} from './buffer/key';
 import {
   ddAction,
   yyAction,
