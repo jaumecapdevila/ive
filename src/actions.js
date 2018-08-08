@@ -13,11 +13,13 @@ export const ddAction = function(keyBuffer, copyBuffer) {
 
   const currentLine = getCurrentLine(content, position);
 
-  copyBuffer.copy(lines[currentLine - 1]);
+  const lineID = currentLine - 1;
 
-  const filtered = lines.filter((line, index) => index + 1 !== currentLine);
+  copyBuffer.copy(lines[lineID]);
 
-  this.value = filtered.join('\n');
+  lines.splice(lineID, 1);
+
+  this.value = lines.join('\n');
 
   keyBuffer.clear();
 };
