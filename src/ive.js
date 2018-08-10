@@ -2,7 +2,7 @@ import {focusHandler} from './handler/focus';
 import {keyDownHandler} from './handler/keyDown';
 
 export const init = function() {
-  const textAreas = targets();
+  const textAreas = Array.from(document.getElementsByTagName('textarea'));
 
   if (textAreas.length === 0) {
     return;
@@ -10,8 +10,6 @@ export const init = function() {
 
   listeners(textAreas);
 };
-
-const targets = () => Array.from(document.getElementsByTagName('textarea'));
 
 function listeners(targets) {
   targets.forEach(function(target) {
