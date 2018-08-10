@@ -9,6 +9,8 @@ export const ddAction = function(keyBuffer, copyBuffer) {
 
   if (lines.length === 1) {
     this.value = '';
+    copyBuffer.copy(lines[0]);
+    return;
   }
 
   const currentLine = getCurrentLine(content, position);
@@ -169,6 +171,11 @@ export const pasteAction = function(copyBuffer) {
   const position = this.selectionStart,
     content = this.value.trim(),
     lines = content.split('\n');
+
+  if (content === '') {
+    this.value = copyBuffer.paste();
+    return;
+  }
 
   const currentLine = getCurrentLine(content, position);
 
