@@ -1,5 +1,6 @@
-import {KeyBuffer} from './buffer/key';
-import {CopyBuffer} from './buffer/copy';
+
+import {KeyBuffer} from '../buffer/key';
+import {CopyBuffer} from '../buffer/copy';
 import {
   ddAction,
   yyAction,
@@ -10,16 +11,12 @@ import {
   toLineEndWithEditAction,
   newLineWithEditAction,
   pasteAction,
-} from './actions';
+} from '../actions';
 
 const keyBuffer = new KeyBuffer();
 const copyBuffer = new CopyBuffer();
 
-export const focusHandler = function() {
-  this.classList.add('disabled');
-};
-
-export const keydownHandler = function(event) {
+export const keyDownHandler = function(event) {
   const navigationKeys = [
     'ArrowUp',
     'ArrowRight',
