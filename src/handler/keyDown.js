@@ -12,6 +12,7 @@ import {
   newLineWithEditAction,
   pasteAction,
   endOfWordAction,
+  beginningOfWordAction,
 } from '../actions';
 
 const keyBuffer = new KeyBuffer();
@@ -91,6 +92,11 @@ export const keyDownHandler = function(event) {
     case 'e':
       if (isDisabled) {
         endOfWordAction.apply(this);
+      }
+      break;
+    case 'b':
+      if (isDisabled) {
+        beginningOfWordAction.apply(this);
       }
       break;
     default:

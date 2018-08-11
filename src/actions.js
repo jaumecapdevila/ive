@@ -210,6 +210,32 @@ export const endOfWordAction = function() {
   }
 };
 
+export const beginningOfWordAction = function() {
+  const position = this.selectionStart,
+    offset = 2,
+    content = this.value.trim();
+
+  if (content === '' || position === 0) {
+    return;
+  }
+
+  for (let i = position - offset; i >= 0; i--) {
+    const regex = /\s/,
+      character = content.charAt(i);
+
+    if (i === 0) {
+      this.selectionStart = 0;
+      this.selectionEnd = 0;
+      break;
+    }
+
+    if (regex.test(character)) {
+      this.selectionStart = i + 1;
+      this.selectionEnd = i + 1;
+      break;
+    }
+  }
+};
 /**
  * @param {String} content
  * @param {String} position
