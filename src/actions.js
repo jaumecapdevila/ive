@@ -183,6 +183,33 @@ export const pasteAction = function(copyBuffer) {
   this.value = lines.join('\n');
 };
 
+export const endOfWordAction = function() {
+  const position = this.selectionStart,
+    offset = 1,
+    content = this.value.trim();
+
+  if (content === '' || position === content.length) {
+    return;
+  }
+
+  for (let i = position + offset; i <= content.length; i++) {
+    const regex = /\s/,
+      character = content.charAt(i);
+
+    if (i === content.length) {
+      this.selectionStart = content.length;
+      this.selectionEnd = content.length;
+      break;
+    }
+
+    if (regex.test(character)) {
+      this.selectionStart = i;
+      this.selectionEnd = i;
+      break;
+    }
+  }
+};
+
 /**
  * @param {String} content
  * @param {String} position

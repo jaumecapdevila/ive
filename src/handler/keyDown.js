@@ -11,6 +11,7 @@ import {
   toLineEndWithEditAction,
   newLineWithEditAction,
   pasteAction,
+  endOfWordAction,
 } from '../actions';
 
 const keyBuffer = new KeyBuffer();
@@ -85,6 +86,11 @@ export const keyDownHandler = function(event) {
     case 'p':
       if (isDisabled) {
         pasteAction.apply(this, [copyBuffer]);
+      }
+      break;
+    case 'e':
+      if (isDisabled) {
+        endOfWordAction.apply(this);
       }
       break;
     default:
