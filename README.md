@@ -30,19 +30,19 @@ A lot of more commands coming soon :) Feel free to collaborate by making a Pull 
 
 Install dependencies:
 
-```
+```bash
 npm install
 ```
 
 Compile scripts and styles:
 
-```
+```bash
 npm start
 ```
 
 ## Testing
 
-###### Firefox
+### Firefox
 
 1. Navigate to `about:debugging`
 
