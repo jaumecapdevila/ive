@@ -10,17 +10,19 @@ This extension is still in development so it's not ready to be in any extension 
 
 | Command | Action                                                       |
 | ------- | ------------------------------------------------------------ |
-| yy      | Duplicates the current line                                  |
-| dd      | Remove the current line (without copying its content to the buffer) |
-| gg      | Set the position of the cursor at the beginning of the content |
-| G       | Set the position of the cursor at the end of the content     |
-| Esc     | Activate the normal mode                                     |
-| i       | Activate the insert mode                                     |
+| e       | Go to the end of the current word |
+| b       | Go to the previous word |
 | $       | Set the position of the cursor at the end of the current line |
 | 0       | Set the position of the cursor at the beginning of the current line |
+| yy      | Copy the current line |
+| dd      | Remove the current line and stores it's content to the buffer |
+| gg      | Set the position of the cursor at the first character |
+| G       | Set the position of the cursor at the last character |
+| Esc     | Activate the normal mode |
+| i       | Activate the insert mode |
 | A       | Set the position of the cursor at the end of the current line and switch to insert mode |
 | O       | Insert a new line below the current line and switch to insert mode |
-| p       | Paste the content of the buffer below the current line       |
+| p       | Paste the content of the buffer below the current line |
 
 A lot of more commands coming soon :) Feel free to collaborate by making a Pull Request.
 
