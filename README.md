@@ -14,10 +14,10 @@ This extension is still in development so it's not ready to be in any extension 
 | b       | Go to the previous word |
 | $       | Set the position of the cursor at the end of the current line |
 | 0       | Set the position of the cursor at the beginning of the current line |
-| yy      | Copy the current line |
-| dd      | Remove the current line and stores it's content to the buffer |
 | gg      | Set the position of the cursor at the first character |
 | G       | Set the position of the cursor at the last character |
+| yy      | Copy the current line |
+| dd      | Remove the current line and stores it's content to the buffer |
 | Esc     | Activate the normal mode |
 | i       | Activate the insert mode |
 | A       | Set the position of the cursor at the end of the current line and switch to insert mode |
