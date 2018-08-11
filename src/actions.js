@@ -192,19 +192,31 @@ export const endOfWordAction = function() {
     return;
   }
 
-  for (let i = position + offset; i <= content.length; i++) {
+  const firstIndex = position + offset;
+
+  for (let i = firstIndex; i <= content.length; i++) {
     const regex = /\s/,
       character = content.charAt(i);
 
-    if (i === content.length) {
-      this.selectionStart = content.length;
-      this.selectionEnd = content.length;
+    if (i === firstIndex && regex.test(character)) {
+      let newIndex = i + 1;
+      while (regex.test(content.charAt(newIndex))) {
+        newIndex++;
+      }
+      this.selectionStart = newIndex;
+      this.selectionEnd = newIndex;
       break;
     }
 
     if (regex.test(character)) {
       this.selectionStart = i;
       this.selectionEnd = i;
+      break;
+    }
+
+    if (i === content.length) {
+      this.selectionStart = content.length;
+      this.selectionEnd = content.length;
       break;
     }
   }
@@ -218,20 +230,30 @@ export const beginningOfWordAction = function() {
   if (content === '' || position === 0) {
     return;
   }
-
-  for (let i = position - offset; i >= 0; i--) {
+  const firstIndex = position - offset;
+  for (let i = firstIndex; i >= 0; i--) {
     const regex = /\s/,
       character = content.charAt(i);
 
-    if (i === 0) {
-      this.selectionStart = 0;
-      this.selectionEnd = 0;
+    if (i === firstIndex && regex.test(character)) {
+      let newIndex = i - 1;
+      while (regex.test(content.charAt(newIndex))) {
+        newIndex--;
+      }
+      this.selectionStart = newIndex + 1;
+      this.selectionEnd = newIndex + 1;
       break;
     }
 
     if (regex.test(character)) {
       this.selectionStart = i + 1;
       this.selectionEnd = i + 1;
+      break;
+    }
+
+    if (i === 0) {
+      this.selectionStart = 0;
+      this.selectionEnd = 0;
       break;
     }
   }
