@@ -13,28 +13,31 @@ import {
   endOfWordAction,
   beginningOfWordAction,
   joinLinesAction,
-  lineSelectAction
+  lineSelectAction,
+  yAction,
 } from '../actions';
 
 const keyBuffer = new KeyBuffer();
 const copyBuffer = new CopyBuffer();
 
 export const keyDownHandler = function(event) {
-  const navigationKeys = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'],
-    key = event.key,
-    isDisabled = this.classList.contains('disabled');
+  const key = event.key,
+    isDisabled = this.classList.contains('disabled'),
+    isInSelection = this.classList.contains('selection');
 
-  if (isDisabled && navigationKeys.indexOf(key) === -1) {
+  if (isDisabled && !isNavigationKey(key)) {
     event.preventDefault();
   }
 
   switch (key) {
     case 'Escape':
       this.classList.add('disabled');
+      this.classList.remove('selection');
       break;
     case 'i':
       if (isDisabled) {
         this.classList.remove('disabled');
+        this.classList.remove('selection');
         return;
       }
       break;
@@ -107,3 +110,12 @@ export const keyDownHandler = function(event) {
       return;
   }
 };
+
+/**
+ * @param {String} key
+ * @returns {Boolean}
+ */
+function isNavigationKey(key) {
+  const navigationKeys = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'];
+  return navigationKeys.indexOf(key) === -1;
+}
