@@ -1,5 +1,5 @@
-import { KeyBuffer } from '../buffer/key';
-import { CopyBuffer } from '../buffer/copy';
+import {KeyBuffer} from '../buffer/key';
+import {CopyBuffer} from '../buffer/copy';
 import {
   ddAction,
   yyAction,
@@ -47,7 +47,9 @@ export const keyDownHandler = function(event) {
       }
       break;
     case 'y':
-      if (isDisabled) {
+      if (isInSelection) {
+        yAction.apply(this, [copyBuffer]);
+      } else if (isDisabled) {
         yyAction.apply(this, [keyBuffer, copyBuffer]);
       }
       break;

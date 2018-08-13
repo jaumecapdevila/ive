@@ -168,6 +168,7 @@ export const pasteAction = function(copyBuffer) {
   if (copyBuffer.empty()) {
     return;
   }
+
   const position = this.selectionStart,
     content = this.value.trim(),
     lines = content.split('\n');
@@ -314,6 +315,16 @@ export const lineSelectAction = function() {
       break;
     }
   }
+};
+
+export const yAction = function(copyBuffer) {
+  const content = this.value,
+    difference = this.selectionEnd - this.selectionStart,
+    selection = content.substr(this.selectionStart, difference);
+
+  this.classList.remove('selection');
+  this.selectionEnd = this.selectionStart;
+  copyBuffer.copy(selection);
 };
 
 /**
