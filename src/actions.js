@@ -270,15 +270,17 @@ export const joinLinesAction = function() {
     return;
   }
 
-  const currentLine = getCurrentLine(content, position);
+  const currentLine = getCurrentLine(content, position),
+    currentLineIndex = currentLine - offset;
+
 
   if (currentLine === numberOfLines) {
     return;
   }
 
-  const joinedLine = `${lines[currentLine - offset]} ${lines[currentLine]}` ;
+  const joinedLine = `${lines[currentLineIndex]} ${lines[currentLine]}` ;
 
-  lines[currentLine - offset] = joinedLine;
+  lines[currentLineIndex] = joinedLine;
   lines.splice(currentLine, 1);
 
   this.value = lines.join('\n');
