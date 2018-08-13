@@ -164,8 +164,8 @@ export const newLineWithEditAction = function() {
   this.classList.remove('disabled');
 };
 
-export const pasteAction = function(copyBuffer) {
-  if (copyBuffer.empty()) {
+export const pasteAction = function(buffer) {
+  if (buffer.empty()) {
     return;
   }
 
@@ -174,13 +174,13 @@ export const pasteAction = function(copyBuffer) {
     lines = content.split('\n');
 
   if (content === '') {
-    this.value = copyBuffer.paste();
+    this.value = buffer.paste();
     return;
   }
 
   const currentLine = getCurrentLine(content, position);
 
-  lines.splice(currentLine, 0, copyBuffer.paste());
+  lines.splice(currentLine, 0, buffer.paste());
   this.value = lines.join('\n');
 };
 
