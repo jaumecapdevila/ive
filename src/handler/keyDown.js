@@ -1,6 +1,5 @@
-
-import {KeyBuffer} from '../buffer/key';
-import {CopyBuffer} from '../buffer/copy';
+import { KeyBuffer } from '../buffer/key';
+import { CopyBuffer } from '../buffer/copy';
 import {
   ddAction,
   yyAction,
@@ -20,16 +19,9 @@ const keyBuffer = new KeyBuffer();
 const copyBuffer = new CopyBuffer();
 
 export const keyDownHandler = function(event) {
-  const navigationKeys = [
-    'ArrowUp',
-    'ArrowRight',
-    'ArrowDown',
-    'ArrowLeft',
-  ];
-
-  const key = event.key;
-
-  const isDisabled = this.classList.contains('disabled');
+  const navigationKeys = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'],
+    key = event.key,
+    isDisabled = this.classList.contains('disabled');
 
   if (isDisabled && navigationKeys.indexOf(key) === -1) {
     event.preventDefault();
