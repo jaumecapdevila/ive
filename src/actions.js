@@ -273,17 +273,47 @@ export const joinLinesAction = function() {
   const currentLine = getCurrentLine(content, position),
     currentLineIndex = currentLine - offset;
 
-
   if (currentLine === numberOfLines) {
     return;
   }
 
-  const joinedLine = `${lines[currentLineIndex]} ${lines[currentLine]}` ;
+  const joinedLine = `${lines[currentLineIndex]} ${lines[currentLine]}`;
 
   lines[currentLineIndex] = joinedLine;
   lines.splice(currentLine, 1);
 
   this.value = lines.join('\n');
+};
+
+export const lineSelectAction = function() {
+  const position = this.selectionStart,
+    content = this.value.trim(),
+    offset = 1,
+    lines = content.split('\n');
+
+  this.classList.add('selection');
+
+  if (lines.length === 1) {
+    this.selectionStart = 0;
+    this.selectionEnd = content.length;
+    return;
+  }
+
+  const currentLine = getCurrentLine(content, position);
+
+  let start = 0;
+
+  for (let i = 0; i < lines.length; i++) {
+    if (i < currentLine - 1) {
+      start += lines[i].length;
+    }
+    if (i === currentLine - 1) {
+      start += currentLine * offset - 1;
+      this.selectionStart = start;
+      this.selectionEnd = start + lines[i].length;
+      break;
+    }
+  }
 };
 
 /**
