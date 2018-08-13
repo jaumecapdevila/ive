@@ -258,6 +258,32 @@ export const beginningOfWordAction = function() {
     }
   }
 };
+
+export const joinLinesAction = function() {
+  const position = this.selectionStart,
+    content = this.value.trim(),
+    offset = 1,
+    lines = content.split('\n'),
+    numberOfLines = lines.length;
+
+  if (numberOfLines <= 1) {
+    return;
+  }
+
+  const currentLine = getCurrentLine(content, position);
+
+  if (currentLine === numberOfLines) {
+    return;
+  }
+
+  const joinedLine = `${lines[currentLine - offset]} ${lines[currentLine]}` ;
+
+  lines[currentLine - offset] = joinedLine;
+  lines.splice(currentLine, 1);
+
+  this.value = lines.join('\n');
+};
+
 /**
  * @param {String} content
  * @param {String} position

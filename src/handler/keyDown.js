@@ -13,6 +13,7 @@ import {
   pasteAction,
   endOfWordAction,
   beginningOfWordAction,
+  joinLinesAction
 } from '../actions';
 
 const keyBuffer = new KeyBuffer();
@@ -97,6 +98,11 @@ export const keyDownHandler = function(event) {
     case 'b':
       if (isDisabled) {
         beginningOfWordAction.apply(this);
+      }
+      break;
+    case 'J':
+      if (isDisabled) {
+        joinLinesAction.apply(this);
       }
       break;
     default:
