@@ -119,5 +119,5 @@ export const keyDownHandler = function(event) {
  */
 function isNavigationKey(key) {
   const navigationKeys = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'];
-  return navigationKeys.indexOf(key) === -1;
+  return navigationKeys.indexOf(key) !== -1;
 }
