@@ -23,6 +23,7 @@ This extension is still in development so it's not ready to be in any extension 
 | A       | Set the position of the cursor at the end of the current line and switch to insert mode |
 | O       | Insert a new line below the current line and switch to insert mode |
 | p       | Paste the content of the buffer below the current line |
+| J       | Joins the current and the following line |
 
 A lot of more commands coming soon :) Feel free to collaborate by making a Pull Request.
 
