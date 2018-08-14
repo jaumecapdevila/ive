@@ -68,6 +68,7 @@ export const keyDownHandler = function(event) {
         return;
       }
       yyAction.apply(this, [copyBuffer]);
+      actionsRegistry.record(this, yyAction, [copyBuffer]);
       keyBuffer.clear();
       break;
     case 'g':
@@ -109,6 +110,7 @@ export const keyDownHandler = function(event) {
     case 'p':
       if (isDisabled) {
         pasteAction.apply(this, [copyBuffer]);
+        actionsRegistry.record(this, pasteAction, [copyBuffer]);
       }
       break;
     case 'e':
