@@ -1,4 +1,5 @@
 import {KeyBuffer} from '../buffer/key';
+import {ActionsRegistry} from '../buffer/actions';
 import {CopyBuffer} from '../buffer/copy';
 import {
   ddAction,
@@ -17,8 +18,9 @@ import {
   yAction,
 } from '../actions';
 
-const keyBuffer = new KeyBuffer();
-const copyBuffer = new CopyBuffer();
+const keyBuffer = new KeyBuffer(),
+  copyBuffer = new CopyBuffer(),
+  actionsRegistry = new ActionsRegistry();
 
 export const keyDownHandler = function(event) {
   const key = event.key,
@@ -42,21 +44,41 @@ export const keyDownHandler = function(event) {
       }
       break;
     case 'd':
-      if (isDisabled) {
-        ddAction.apply(this, [keyBuffer, copyBuffer]);
+      if (!isDisabled) {
+        return;
       }
+      if (!keyBuffer.has('d')) {
+        keyBuffer.push('d');
+        return;
+      }
+      ddAction.apply(this, [copyBuffer]);
+      keyBuffer.clear();
       break;
     case 'y':
+      if (!isDisabled) {
+        return;
+      }
       if (isInSelection) {
         yAction.apply(this, [copyBuffer]);
-      } else if (isDisabled) {
-        yyAction.apply(this, [keyBuffer, copyBuffer]);
+        return;
       }
+      if (!keyBuffer.has('y')) {
+        keyBuffer.push('y');
+        return;
+      }
+      yyAction.apply(this, [copyBuffer]);
+      keyBuffer.clear();
       break;
     case 'g':
-      if (isDisabled) {
-        ggAction.apply(this, [keyBuffer]);
+      if (!isDisabled) {
+        return;
       }
+      if (!keyBuffer.has('g')) {
+        keyBuffer.push('g');
+        return;
+      }
+      ggAction.apply(this);
+      keyBuffer.clear();
       break;
     case 'G':
       if (isDisabled) {

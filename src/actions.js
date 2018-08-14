@@ -1,8 +1,4 @@
-export const ddAction = function(keyBuffer, copyBuffer) {
-  if (!keyBuffer.has('d')) {
-    keyBuffer.push('d');
-    return;
-  }
+export const ddAction = function(copyBuffer) {
   const position = this.selectionStart,
     content = this.value.trim(),
     lines = content.split('\n');
@@ -22,33 +18,20 @@ export const ddAction = function(keyBuffer, copyBuffer) {
   lines.splice(lineID, 1);
 
   this.value = lines.join('\n');
-
-  keyBuffer.clear();
 };
 
-export const yyAction = function(keyBuffer, copyBuffer) {
-  if (!keyBuffer.has('y')) {
-    keyBuffer.push('y');
-    return;
-  }
+export const yyAction = function(buffer) {
   const position = this.selectionStart,
     content = this.value.trim(),
-    lines = content.split('\n');
+    lines = content.split('\n'),
+    currentLine = getCurrentLine(content, position);
 
-  const currentLine = getCurrentLine(content, position);
-  copyBuffer.copy(lines[currentLine - 1]);
-
-  keyBuffer.clear();
+  buffer.copy(lines[currentLine - 1]);
 };
 
-export const ggAction = function(keyBuffer) {
-  if (!keyBuffer.has('g')) {
-    keyBuffer.push('g');
-    return;
-  }
+export const ggAction = function() {
   this.selectionStart = 0;
   this.selectionEnd = 0;
-  keyBuffer.clear();
 };
 
 export const GAction = function() {
