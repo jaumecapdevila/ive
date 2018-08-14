@@ -3,7 +3,9 @@ export function ActionsRegistry() {
 }
 
 /**
- * @param {String} action
+ * @param {Object} context
+ * @param {Function} action
+ * @param {Array} params
  */
 ActionsRegistry.prototype.record = function(context, action, params) {
   if (this.actions.length === 3) {
@@ -16,9 +18,6 @@ ActionsRegistry.prototype.record = function(context, action, params) {
   });
 };
 
-/**
- * @returns {String}
- */
 ActionsRegistry.prototype.replyLast = function() {
   const lastAction = this.actions[this.actions.length - 1];
 

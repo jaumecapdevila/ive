@@ -52,6 +52,7 @@ export const keyDownHandler = function(event) {
         return;
       }
       ddAction.apply(this, [copyBuffer]);
+      actionsRegistry.record(this, ddAction, [copyBuffer]);
       keyBuffer.clear();
       break;
     case 'y':
@@ -128,6 +129,11 @@ export const keyDownHandler = function(event) {
     case 'V':
       if (isDisabled) {
         lineSelectAction.apply(this);
+      }
+      break;
+    case '.':
+      if (isDisabled) {
+        actionsRegistry.replyLast();
       }
       break;
     default:
