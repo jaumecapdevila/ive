@@ -1,5 +1,5 @@
-import {focusHandler} from './handler/focus';
-import {keyDownHandler} from './handler/keyDown';
+import { focusHandler } from './handler/focus';
+import { keyDownHandler } from './handler/keyDown';
 
 const textAreas = Array.from(document.getElementsByTagName('textarea'));
 

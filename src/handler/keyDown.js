@@ -1,6 +1,6 @@
-import {KeyBuffer} from '../buffer/key';
-import {ActionsRegistry} from '../buffer/actions';
-import {CopyBuffer} from '../buffer/copy';
+import { KeyBuffer } from '../buffer/key';
+import { ActionsRegistry } from '../buffer/actions';
+import { CopyBuffer } from '../buffer/copy';
 import {
   ddAction,
   yyAction,
