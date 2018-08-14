@@ -48,11 +48,9 @@ export const toLineStartAction = function() {
     return;
   }
 
-  const currentLine = getCurrentLine(content, position);
-
+  const currentLine = getCurrentLine(content, position),
+    offset = currentLine - 1;
   let lineEnd = 0;
-
-  const offset = currentLine - 1;
 
   for (let i = 0; i < offset; i++) {
     lineEnd += lines[i].length;
@@ -74,11 +72,10 @@ export const toLineEndAction = function() {
     return;
   }
 
-  const currentLine = getCurrentLine(content, position);
+  const currentLine = getCurrentLine(content, position),
+    offset = currentLine - 1;
 
   let lineEnd = 0;
-
-  const offset = currentLine - 1;
 
   for (let i = 0; i <= offset; i++) {
     lineEnd += lines[i].length;
@@ -101,11 +98,10 @@ export const toLineEndWithEditAction = function() {
     return;
   }
 
-  const currentLine = getCurrentLine(content, position);
+  const currentLine = getCurrentLine(content, position),
+    offset = currentLine - 1;
 
   let lineEnd = 0;
-
-  const offset = currentLine - 1;
 
   for (let i = 0; i <= offset; i++) {
     lineEnd += lines[i].length;
