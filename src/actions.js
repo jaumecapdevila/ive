@@ -9,14 +9,11 @@ export const ddAction = function(copyBuffer) {
     return;
   }
 
-  const currentLine = getCurrentLine(content, position);
-
-  const lineID = currentLine - 1;
+  const currentLine = getCurrentLine(content, position),
+    lineID = currentLine - 1;
 
   copyBuffer.copy(lines[lineID]);
-
   lines.splice(lineID, 1);
-
   this.value = lines.join('\n');
 };
 
