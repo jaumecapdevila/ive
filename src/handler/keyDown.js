@@ -25,7 +25,7 @@ const keyBuffer = new KeyBuffer(),
 export const keyDownHandler = function(event) {
   const key = event.key,
     isDisabled = this.classList.contains('disabled'),
-    isInSelection = this.classList.contains('selection');
+    isInSelection = this.selectionStart !== this.selectionEnd;
 
   if (isDisabled && !isNavigationKey(key)) {
     event.preventDefault();
@@ -34,12 +34,10 @@ export const keyDownHandler = function(event) {
   switch (key) {
     case 'Escape':
       this.classList.add('disabled');
-      this.classList.remove('selection');
       break;
     case 'i':
       if (isDisabled) {
         this.classList.remove('disabled');
-        this.classList.remove('selection');
         return;
       }
       break;

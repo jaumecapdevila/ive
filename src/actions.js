@@ -272,8 +272,6 @@ export const lineSelectAction = function() {
     offset = 1,
     lines = content.split('\n');
 
-  this.classList.add('selection');
-
   if (lines.length === 1) {
     this.selectionStart = 0;
     this.selectionEnd = content.length;
@@ -302,7 +300,6 @@ export const yAction = function(copyBuffer) {
     difference = this.selectionEnd - this.selectionStart,
     selection = content.substr(this.selectionStart, difference);
 
-  this.classList.remove('selection');
   this.selectionEnd = this.selectionStart;
   copyBuffer.copy(selection);
 };
