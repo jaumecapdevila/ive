@@ -119,7 +119,11 @@ export const newLineWithEditAction = function() {
 
   if (lines.length === 1) {
     lines.push('');
-    this.value = lines.join('\n');
+    const newContent = lines.join('\n'),
+      characters = newContent.length;
+    this.value = newContent;
+    this.selectionStart = characters;
+    this.selectionEnd = characters;
     this.classList.remove('disabled');
     return;
   }
