@@ -102,7 +102,7 @@ export const keyDownHandler = function(event) {
         toLineEndWithEditAction.apply(this);
       }
       break;
-    case 'O':
+    case 'o':
       if (isDisabled) {
         newLineWithEditAction.apply(this);
       }

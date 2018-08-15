@@ -21,7 +21,7 @@ This extension is still in development so it's not ready to be in any extension 
 | Esc     | Activate the normal mode |
 | i       | Activate the insert mode |
 | A       | Set the position of the cursor at the end of the current line and switch to insert mode |
-| O       | Insert a new line below the current line and switch to insert mode |
+| o       | Insert a new line below the current line and switch to insert mode |
 | p       | Paste the content of the buffer below the current line |
 | J       | Joins the current and the following line |
 
