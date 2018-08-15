@@ -17,6 +17,7 @@ This extension is still in development so it's not ready to be in any extension 
 | gg      | Set the position of the cursor at the first character |
 | G       | Set the position of the cursor at the last character |
 | yy      | Copy the current line |
+| y       | Copy the selected content to the buffer |
 | dd      | Remove the current line and stores it's content to the buffer |
 | Esc     | Activate the normal mode |
 | i       | Activate the insert mode |
@@ -24,6 +25,7 @@ This extension is still in development so it's not ready to be in any extension 
 | o       | Insert a new line below the current line and switch to insert mode |
 | p       | Paste the content of the buffer below the current line |
 | J       | Joins the current and the following line |
+| V       | Select the current line |
 
 A lot of more commands coming soon :) Feel free to collaborate by making a Pull Request.
 
