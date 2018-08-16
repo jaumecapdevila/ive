@@ -4,3 +4,19 @@ textarea {
         // caret-color: rgb(0, 200, 0);
     }
 }
+
+#mode-bar {
+    display: block;
+    background-color: #f1f1f1;
+    border-top: 1px solid #cccccc;
+    z-index: 99999;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    padding: 1rem;
+    text-align: center;
+    p {
+        margin: 0;
+    }
+}

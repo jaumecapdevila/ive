@@ -2,6 +2,8 @@ import { KeyBuffer } from '../buffer/key';
 import { ActionsRegistry } from '../buffer/actions';
 import { CopyBuffer } from '../buffer/copy';
 import {
+  escapeAction,
+  insertAction,
   ddAction,
   yyAction,
   ggAction,
@@ -33,11 +35,11 @@ export const keyDownHandler = function(event) {
 
   switch (key) {
     case 'Escape':
-      this.classList.add('disabled');
+      escapeAction.apply(this);
       break;
     case 'i':
       if (isDisabled) {
-        this.classList.remove('disabled');
+        insertAction.apply(this);
         return;
       }
       break;
