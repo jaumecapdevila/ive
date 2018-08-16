@@ -1,3 +1,5 @@
+import { toMode } from './util';
+
 export const escapeAction = function() {
   this.classList.add('disabled');
   toMode('NORMAL');
@@ -321,17 +323,4 @@ export const yAction = function(copyBuffer) {
  */
 function getCurrentLine(content, position) {
   return content.slice(0, position).split('\n').length;
-}
-
-/**
- * @param {String} mode
- */
-function toMode(mode) {
-  const modeBar = document.getElementById('mode-bar');
-
-  if (!modeBar) {
-    return;
-  }
-
-  modeBar.innerHTML = `<p>Mode: ${mode}</p>`;
 }
