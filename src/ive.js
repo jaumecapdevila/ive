@@ -9,5 +9,18 @@ if (textAreas.length > 0) {
     target.addEventListener('focus', focusHandler);
     target.addEventListener('keydown', keyDownHandler);
   });
+  browser.storage.local.get('bar').then(
+    function(result) {
+      if (result.bar) {
+        displayModeBar();
+      }
+    },
+    function() {
+      displayModeBar();
+    }
+  );
+}
+
+function displayModeBar() {
   document.body.insertAdjacentHTML('afterbegin', modeBar);
 }

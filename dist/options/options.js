@@ -11,7 +11,7 @@ function restoreOptions() {
     function(result) {
       document.getElementById('status-bar').checked = result.bar;
     },
-    function(error) {
+    function() {
       // TODO notificate the error
     }
   );
