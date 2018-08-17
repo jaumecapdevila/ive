@@ -18,5 +18,9 @@
     "gecko": {
       "strict_min_version": "58.0"
     }
-  }
+  },
+  "options_ui": {
+    "page": "options/index.html"
+  },
+  "permissions": ["storage"]
 }
