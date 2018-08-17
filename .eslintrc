@@ -12,7 +12,10 @@
         "ecmaVersion": 6,
         "sourceType": "module"
     },
+    "plugins": ["no-unsanitized"],
     "rules": {
-        "semi": 2
+        "semi": 2,
+        "no-unsanitized/method": "error",
+        "no-unsanitized/property": "error"
     }
 }
