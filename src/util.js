@@ -14,3 +14,11 @@ export function toMode(mode) {
 
   modeBar.innerHTML = `<p>Mode: ${mode}</p>`;
 }
+
+/**
+ * @param {String} option
+ * @returns {Promise}
+ */
+export function getOption(option) {
+  return browser.storage.local.get(option);
+}
