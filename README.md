@@ -4,7 +4,11 @@
 
 ## Install
 
-This extension is still in development so it's not ready to be in any extension marketplace. If you want to try this extension jump right to the **Testing** section.
+Currently this extension is only available for Firefox users. You can find the
+extension in the [Addons markeplace](https://addons.mozilla.org/en-US/firefox/).
+
+Hopefully, it's going to be available for other browsers
+such as Chrome or Opera soon :)
 
 ## Available commands
 
@@ -28,6 +32,13 @@ This extension is still in development so it's not ready to be in any extension 
 | V       | Select the current line |
 
 A lot of more commands coming soon :) Feel free to collaborate by making a Pull Request.
+
+## Customization
+
+By default the extension it's going to add a fixed status bar to the bottom of
+the page that you are visiting to indicate the active mode.
+If you want to remove it, go to the extension's preferences page
+and uncheck this option.
 
 ## Setup
 
