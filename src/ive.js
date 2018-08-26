@@ -1,6 +1,7 @@
 import { focusHandler } from './handler/focus';
 import { keyDownHandler } from './handler/keyDown';
-import { modeBar, getOption } from './util';
+import { getOption } from './util';
+import { modeBar } from './bar';
 
 const textAreas = Array.from(document.getElementsByTagName('textarea'));
 

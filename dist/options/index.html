@@ -9,6 +9,11 @@
 <body>
     <form id="settings">
         <label>Display status bar with current mode: <input type="checkbox" id="status-bar"></label>
+        <label>Select the position for the status bar :</label>
+        <select name="bar-position" id="bar-position">
+            <option selected value="top">Top</option>
+            <option value="bottom">Bottom</option>
+        </select>
         <button type="submit">Save</button>
     </form>
     <script src="options.js"></script>
