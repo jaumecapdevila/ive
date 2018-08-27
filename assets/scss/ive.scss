@@ -16,6 +16,9 @@ textarea {
     left: 0px;
     padding: 1rem;
     text-align: center;
+    &.is-hidden {
+        display: none;
+    }
     p {
         margin: 0;
     }
