@@ -7,13 +7,15 @@
     "eslint": "^4.19.1",
     "eslint-plugin-no-unsanitized": "^3.0.2",
     "node-sass": "^4.9.2",
-    "webpack": "^3.12.0"
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
     "start": "npm run build && npm run sass",
     "build": "webpack",
+    "prod": "yarn run build --mode production",
+    "dev": "yarn run build --mode development --watch",
+    "lint": "eslint .",
     "sass": "node-sass assets/scss/ive.scss -o dist/styles/"
   },
   "author": "Jaume Capdevila <contact@jaumecapdevila.net>",
