@@ -17,4 +17,7 @@ if (textAreas.length > 0) {
       document.body.insertAdjacentHTML('afterbegin', modeBar);
     }
   });
+  getOption('position').then(result => {
+    document.getElementById('mode-bar').classList.add(`is-${result.position}`);
+  });
 }

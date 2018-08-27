@@ -8,14 +8,20 @@ textarea {
 #mode-bar {
     display: block;
     background-color: #f1f1f1;
-    border-top: 1px solid #cccccc;
     z-index: 99999;
     position: fixed;
-    bottom: 0px;
     right: 0px;
     left: 0px;
     padding: 1rem;
     text-align: center;
+    &.is-top {
+        border-bottom: 1px solid #cccccc;
+        top: 0px;
+    }
+    &.is-bottom {
+        border-top: 1px solid #cccccc;
+        bottom: 0px;
+    }
     &.is-hidden {
         display: none;
     }
