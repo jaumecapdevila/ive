@@ -13,8 +13,8 @@
   "scripts": {
     "start": "npm run build && npm run sass",
     "build": "webpack",
-    "prod": "yarn run build --mode production",
-    "dev": "yarn run build --mode development --watch",
+    "prod": "npm run build -- --env.mode production",
+    "dev": "npm run build -- --env.mode development --watch",
     "lint": "eslint .",
     "sass": "node-sass assets/scss/ive.scss -o dist/styles/"
   },
