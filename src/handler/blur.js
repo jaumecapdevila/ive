@@ -1,9 +1,7 @@
 import { hide } from '../bar';
 
 export const blurHandler = function() {
-  const focused = document.activeElement;
-  if (focused.tagName.toLowerCase === 'TEXTAREA') {
-    return;
+  if (document.activeElement.tagName.toLowerCase !== 'TEXTAREA') {
+    hide();
   }
-  hide();
 };

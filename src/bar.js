@@ -1,4 +1,4 @@
-export const modeBar = `<div id="mode-bar">
+export const modeBar = `<div id="mode-bar" class="is-hidden">
   <p>Mode: NORMAL</p>
 </div>`;
 
