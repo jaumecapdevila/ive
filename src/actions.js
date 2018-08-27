@@ -1,4 +1,4 @@
-import { toMode } from './util';
+import { toMode } from './bar';
 
 export const escapeAction = function() {
   this.classList.add('disabled');
